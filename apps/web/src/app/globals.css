@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: 30, 42, 71;
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 20, 29, 47;
+  --component-rgb: 30, 42, 71;
+  --blue-rgb: 0, 121, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /*background-color: rgb(var(--background-rgb));*/
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.white {
+  color: rgb(var(--foreground-rgb));
+}
+
+.area-bg-1 {
+  background-color: rgb(var(--background-rgb));
+}
+
+.area-bg-2 {
+  background-color: rgb(var(--component-rgb));
+}
+
+.root-grid {
+  grid-template-columns: 100px auto;
+}
+
+.text-blue-50 {
+  color: rgb(var(--blue-rgb));
+}
+
+.bg-blue-500 {
+  background-color: rgb(var(--blue-rgb));
+}
+
+button {
+  transition: all 0.3s ease-in-out;
+}
+
+button.bg-indigo-600 {
+  background-color: rgb(79, 70, 229);
+}
+
+button.hover\:bg-indigo-600:hover {
+  background-color: rgb(99, 102, 241);
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.primary-color {
+  background-color: rgb(var(--primary-color));
+}
