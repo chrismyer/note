@@ -1,6 +1,6 @@
 'use client';
 
-import { SyntheticEvent, useEffect, useRef } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
 import type { Note } from '@/app/generated/types';
@@ -16,15 +16,15 @@ export function SearchForm({ setNotes }: Props) {
   const keywordRef = useRef('');
   const [searchNotes, { loading, data }] = useLazyQuery(SEARCH_BOOKS_QUERY);
 
-  const onSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+  const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = new FormData(event.target as HTMLFormElement);
+    const form = new FormData(event.target);
     const keyword = form.get('keyword') as string;
     keywordRef.current = keyword;
     searchNotes({ variables: { keyword } });
   };
 
-  const onChangeInput = (event: SyntheticEvent<HTMLInputElement>) => {
+  const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     if (value === '') {
       searchNotes();

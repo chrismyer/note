@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 import Modal from '@/app/components/Modal';
-import { Note, useCreateNoteMutation } from '@/app/generated/types';
+import { Note, SearchNotesQuery, useCreateNoteMutation } from '@/app/generated/types';
 import { SEARCH_BOOKS_QUERY } from '@/app/graphql/search-notes';
 
 type Props = {
@@ -16,7 +16,7 @@ const CreateNote = ({ visible, setVisible }: Props) => {
     update: (cache, result) => {
       const note = result.data?.createNote;
       if (note) {
-        const notes = cache.readQuery({ query: SEARCH_BOOKS_QUERY });
+        const notes = cache.readQuery<SearchNotesQuery>({ query: SEARCH_BOOKS_QUERY });
         if (notes && note) {
           cache.writeQuery({
             query: SEARCH_BOOKS_QUERY,

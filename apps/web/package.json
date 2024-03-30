@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
-    "start": "next start --turbo",
+    "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "codegen": "gql-gen --config codegen.yml"
   },
